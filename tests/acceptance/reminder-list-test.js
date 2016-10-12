@@ -1,13 +1,13 @@
 /* globals server */
 
-import { test } from 'qunit';
+import { test, skip } from 'qunit';
 import moduleForAcceptance from 'remember/tests/helpers/module-for-acceptance';
 
 import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | reminders list');
 
-test('viewing the homepage', function(assert) {
+skip('viewing the homepage', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');

@@ -1,0 +1,11 @@
+<div class="artists template">
+  <p>This is <em>reminder.hbs</em>.</p>
+
+  <ul class="reminders">
+    {{#each model as |reminder|}}
+    <li class='spec-reminder-item'>{{reminder}}</li>
+    {{/each}}
+  </ul>
+
+  {{outlet}}
+</div>
