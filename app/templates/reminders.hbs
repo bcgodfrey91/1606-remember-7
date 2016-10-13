@@ -1,11 +1,11 @@
 <div class="reminders-template">
-  <p>Reminders: </p>
+  <h2>Reminders: </h2>
 
-  <ul class="reminders">
+  <div class="reminders">
     {{#each model as |reminder|}}
-    <li class='spec-reminder-item'>{{reminder.title}}</li>
+    <p class='spec-reminder-item'>{{reminder.title}}</p>
     {{/each}}
-  </ul>
+  </div>
 
   {{outlet}}
 </div>
