@@ -8,9 +8,9 @@
       {{/link-to}}
       <p class="spec-reminder-date">{{reminder.date}}</p>
     {{/each}}
-    {{#link-to "new"}}
-    {{/link-to}}
-    <button {{action "doesItWork"}}>Add Reminder</button>
+    {{#link-to 'new' class="spec-add-new-reminder"}}
+    <button class="add-new-reminder">Add new reminder</button>
+  {{/link-to}}
   </div>
 
   {{outlet}}
