@@ -7,7 +7,7 @@ import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | reminders list');
 
-skip('viewing the homepage', function(assert) {
+test('viewing the homepage', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
@@ -18,7 +18,7 @@ skip('viewing the homepage', function(assert) {
   });
 });
 
-test('clicking on an individual item', function(assert) {
+skip('clicking on an individual item', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
