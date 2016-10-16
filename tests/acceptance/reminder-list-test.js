@@ -35,12 +35,26 @@ test('clicking on an individual item', function(assert) {
   });
 });
 
-test('creating a reminder', function(assert) {
-  visit('/new');
-  click('.spec-reminder-button');
+test('creating an area to make a new reminder', function(assert) {
+  visit('/');
+  click('.spec-add-new-reminder');
 
   andThen(function() {
     assert.equal(currentURL(), '/new');
-    assert.equal(Ember.$('.spec-reminder-item').length, 6);
+    assert.equal(Ember.$('.add-reminder-form').length,1)
+  });
+});
+
+test('creating an new reminder', function(assert) {
+  visit('/new');
+
+  fillIn('.spec-input-title.ember-view.ember-text-field', 'Call Mike')
+  fillIn('.spec-input-date', '11/11/2016')
+  fillIn('.spec-input-notes', 'Party')
+
+
+  andThen(function() {
+    assert.equal(currentURL(), '/new');
+    assert.equal(Ember.$('.spec-input-title').value, 'Call Mike');
   });
 });
