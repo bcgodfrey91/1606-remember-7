@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
@@ -7,10 +7,10 @@ export default Ember.Controller.extend({
 
   actions: {
     editReminder() {
-      this.set('isEditing', true);
+      this.set("isEditing", true);
     },
     saveReminder() {
-      this.set('isEditing', false);
+      this.set("isEditing", false);
     }
   }
 });
