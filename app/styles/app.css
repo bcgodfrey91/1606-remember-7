@@ -1,3 +1,25 @@
 .active p {
   background-color: red;
 }
+
+.reminders {
+  width: 25%;
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.spec-reminder-date {
+  border-bottom: 1px solid black;
+}
+
+.spec-reminder-addReminder {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-size: 2em;
+}
+
+.spec-reminder-item {
+  font-size: 20px;
+  font-weight: bold;
+}

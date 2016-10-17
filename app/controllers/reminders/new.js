@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   title: '',
   date: '',
   notes: '',
-    
+
   actions: {
     addReminder() {
       const reminder = this.getProperties('title', 'date', 'notes');
