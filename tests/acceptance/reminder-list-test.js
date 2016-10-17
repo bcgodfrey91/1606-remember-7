@@ -48,7 +48,6 @@ test('creating a form to make a new reminder', function(assert) {
 test('creating an new reminder', function(assert) {
   visit('/new');
 
-<<<<<<< HEAD
   fillIn('.spec-input-title', 'Call Mike')
   fillIn('.spec-input-date', '2016-11-11')
   fillIn('.spec-input-notes', 'Birthday')
