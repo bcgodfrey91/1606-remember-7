@@ -1,4 +1,24 @@
 <div class="spec-reminder-title">
-  <h1>{{model.title}}</h1>
+  {{#if isEditing}}
+    {{input type="text" class="edit-title" value=model.title}}
+    {{input type="date" class="edit-date" value=model.date}}
+    {{input type="text" class="edit-notes" value=model.notes}}
+    <button
+      class="save-button"
+      {{action "saveReminder" on="click"}}
+      >
+      Save
+    </button>
+  {{else}}
+    <h1>{{model.title}}</h1>
+    <h1>{{model.date}}</h1>
+    <h1>{{model.notes}}</h1>
+    <button
+      class="edit-button"
+      {{action "editReminder" on="click"}}
+    >
+      Edit
+    </button>
+  {{/if}}
 </div>
 {{outlet}}

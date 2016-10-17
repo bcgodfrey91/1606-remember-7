@@ -41,7 +41,7 @@ test('creating a form to make a new reminder', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/new');
-    assert.equal(Ember.$('.add-reminder-form').length,1)
+    assert.equal(Ember.$('.add-reminder-form').length,1);
   });
 });
 
@@ -65,5 +65,18 @@ test('creating an new reminder', function(assert) {
   andThen(function() {
     assert.equal(Ember.$('.spec-reminder-item:last').text().trim(), 'Call Mike')
     assert.equal(Ember.$('.spec-reminder-date:last').text().trim(), 'Thu Nov 10 2016 17:00:00 GMT-0700 (MST)')
+  });
+});
+
+test('editing a reminder', function(assert) {
+  visit('/');
+  click('.spec-reminder-item:first');
+  click('.edit-button');
+  fillIn('.edit-title', 'What up Mike?!');
+  click('.save-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/1');
+    assert.equal(Ember.$('.spec-reminder-item:last').text().trim(), 'What up Mike?!');
   });
 });
