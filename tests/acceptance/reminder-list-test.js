@@ -34,3 +34,36 @@ test('clicking on an individual item', function(assert) {
     assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), Ember.$('.spec-reminder-title').text().trim());
   });
 });
+
+test('creating a form to make a new reminder', function(assert) {
+  visit('/');
+  click('.spec-add-new-reminder');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/new');
+    assert.equal(Ember.$('.add-reminder-form').length,1)
+  });
+});
+
+test('creating an new reminder', function(assert) {
+  visit('/new');
+
+  fillIn('.spec-input-title', 'Call Mike')
+  fillIn('.spec-input-date', '2016-11-11')
+  fillIn('.spec-input-notes', 'Birthday')
+
+
+  andThen(function() {
+    assert.equal(currentURL(), '/new')
+    assert.equal(Ember.$('.spec-input-title').val(), 'Call Mike')
+    assert.equal(Ember.$('.spec-input-date').val(), '2016-11-11')
+    assert.equal(Ember.$('.spec-input-notes').val(), 'Birthday')
+  });
+
+  click('.submit-button')
+
+  andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-item:last').text().trim(), 'Call Mike')
+    assert.equal(Ember.$('.spec-reminder-date:last').text().trim(), 'Thu Nov 10 2016 17:00:00 GMT-0700 (MST)')
+  });
+});
