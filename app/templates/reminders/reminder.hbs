@@ -1,1 +1,26 @@
+<div class="spec-reminder-title">
+  {{#if isEditing}}
+  {{input class="edit-title" value=model.title}}
+  {{input class="edit-date" value=model.date}}
+  {{input class="edit-notes" value=model.notes}}
+  {{else}}
+  <h1>{{model.title}}</h1>
+  <h1>{{model.date}}</h1>
+  <h1>{{model.notes}}</h1>
+  {{/if}}
+</div>
+<section class="save-edit-buttons">
+  <button
+    class="edit-button"
+    {{action "editReminder" on="click"}}
+  >
+    Edit
+  </button>
+  <button
+    class="save-button"
+    {{action "saveReminder" on="click"}}
+  >
+  Save
+</button>
+</section>
 {{outlet}}
