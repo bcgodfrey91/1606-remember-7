@@ -1,9 +1,9 @@
 <div class="spec-reminder-title">
   {{#if isEditing}}
-    {{input type="text" class="edit-title" value=model.title key-press="checkDirtyAttributes"}}
-    {{input type="date" class="edit-date" value=model.date key-press="checkDirtyAttributes"}}
-    {{input type="text" class="edit-notes" value=model.notes key-press="checkDirtyAttributes"}}
-    <button class="revert-button" hidden={{ unless model.hasDirtyAttributes "true"}} {{action "revertReminder" on="click"}} 
+    {{input type="text" class="edit-title" value=model.title }}
+    {{input type="date" class="edit-date" value=model.date }}
+    {{input type="text" class="edit-notes" value=model.notes }}
+    <button class="revert-button" hidden={{ unless model.hasDirtyAttributes "true"}} {{action "revertReminder" on="click"}}
     >Revert</button>
     <button
       class="save-button"

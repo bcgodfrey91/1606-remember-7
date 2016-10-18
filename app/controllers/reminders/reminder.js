@@ -7,11 +7,11 @@ export default Ember.Controller.extend({
 
   actions: {
     editReminder() {
-      this.set("isEditing", true);
+      this.toggleProperty("isEditing");
     },
     saveReminder() {
       this.get('model').save().then( () => {
-        this.set("isEditing", false);        
+        this.toggleProperty("isEditing");        
       });
     },
     revertReminder() {
