@@ -102,3 +102,14 @@ test('reverting a reminder', function(assert) {
     assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'What up Mike?!');
   });
 });
+
+test('visual indication of unsaved reminders', function(assert) {
+  visit('/');
+  click('.spec-reminder-item:first');
+  click('.edit-button');
+  fillIn('.edit-title', 'What up Mike?!');
+  andThen(function() {
+    assert.equal(currentURL(), '/1');
+    assert.equal(Ember.$('.unsaved').length, 1);
+  });
+});

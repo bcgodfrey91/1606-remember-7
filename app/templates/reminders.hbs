@@ -7,7 +7,10 @@
         {{reminder.title}}
       </p>
       {{/link-to}}
-        <p class="spec-reminder-date">{{reminder.date}}</p>
+      {{#if reminder.hasDirtyAttributes}}
+        <h1 class="unsaved">Please Save</h1>
+      {{/if}}
+      <p class="spec-reminder-date">{{reminder.date}}</p>
     {{/each}}
   </div>
 
