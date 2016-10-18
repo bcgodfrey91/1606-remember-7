@@ -92,16 +92,13 @@ test('reverting a reminder', function(assert) {
     assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'What up Mike?!');
   });
 
-  click('.spec-reminder-item:last');
-  click('.spec-reminder-item:first');
+  click('.save-button');
+  click('.edit-button');
+  fillIn('.edit-title', 'Are you there Ben?!');
   click('.revert-button');
 
   andThen(function() {
     assert.equal(currentURL(), '/1');
-    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), Ember.$('.spec-reminder-title').text().trim());
+    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'What up Mike?!');
   });
-
-
-
-
 });
