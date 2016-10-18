@@ -1,26 +1,28 @@
 <div class="spec-reminder-title">
   {{#if isEditing}}
-  {{input class="edit-title" value=model.title}}
-  {{input class="edit-date" value=model.date}}
-  {{input class="edit-notes" value=model.notes}}
+    {{input type="text" class="edit-title" value=model.title key-press="checkDirtyAttributes"}}
+    {{input type="date" class="edit-date" value=model.date key-press="checkDirtyAttributes"}}
+    {{input type="text" class="edit-notes" value=model.notes key-press="checkDirtyAttributes"}}
+  {{#if dirtyAttributesPresent}}
+    <button class="revert-button" {{action "revertReminder" on="click"}}
+    >Revert</button>
+  {{/if}}
+    <button
+      class="save-button"
+      {{action "saveReminder" on="click"}}
+      >
+      Save
+    </button>
   {{else}}
-  <h1>{{model.title}}</h1>
-  <h1>{{model.date}}</h1>
-  <h1>{{model.notes}}</h1>
+    <h1>{{model.title}}</h1>
+    <h1>{{model.date}}</h1>
+    <h1>{{model.notes}}</h1>
+    <button
+      class="edit-button"
+      {{action "editReminder" on="click"}}
+    >
+      Edit
+    </button>
   {{/if}}
 </div>
-<section class="save-edit-buttons">
-  <button
-    class="edit-button"
-    {{action "editReminder" on="click"}}
-  >
-    Edit
-  </button>
-  <button
-    class="save-button"
-    {{action "saveReminder" on="click"}}
-  >
-  Save
-</button>
-</section>
 {{outlet}}

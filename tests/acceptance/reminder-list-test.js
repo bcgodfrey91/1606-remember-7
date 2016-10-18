@@ -35,7 +35,7 @@ test('clicking on an individual item', function(assert) {
   });
 });
 
-test('creating an area to make a new reminder', function(assert) {
+test('creating a form to make a new reminder', function(assert) {
   visit('/');
   click('.spec-add-new-reminder');
 
@@ -48,13 +48,23 @@ test('creating an area to make a new reminder', function(assert) {
 test('creating an new reminder', function(assert) {
   visit('/new');
 
-  fillIn('.spec-input-title.ember-view.ember-text-field', 'Call Mike');
-  fillIn('.spec-input-date', '11/11/2016');
-  fillIn('.spec-input-notes', 'Party');
+  fillIn('.spec-input-title', 'Call Mike');
+  fillIn('.spec-input-date', '2016-11-11');
+  fillIn('.spec-input-notes', 'Birthday');
+
 
   andThen(function() {
     assert.equal(currentURL(), '/new');
     assert.equal(Ember.$('.spec-input-title').val(), 'Call Mike');
+    assert.equal(Ember.$('.spec-input-date').val(), '2016-11-11');
+    assert.equal(Ember.$('.spec-input-notes').val(), 'Birthday');
+  });
+
+  click('.submit-button');
+
+  andThen(function() {
+    assert.equal(Ember.$('.spec-reminder-item:last').text().trim(), 'Call Mike');
+    assert.equal(Ember.$('.spec-reminder-date:last').text().trim(), 'Thu Nov 10 2016 17:00:00 GMT-0700 (MST)');
   });
 });
 
@@ -67,6 +77,31 @@ test('editing a reminder', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/1');
-    assert.equal(Ember.$('.spec-reminder-item:last').text().trim(), 'What up Mike?!');
+    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'What up Mike?!');
   });
+});
+
+test('reverting a reminder', function(assert) {
+  visit('/');
+  click('.spec-reminder-item:first');
+  click('.edit-button');
+  fillIn('.edit-title', 'What up Mike?!');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/1');
+    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), 'What up Mike?!');
+  });
+
+  click('.spec-reminder-item:last');
+  click('.spec-reminder-item:first');
+  click('.revert-button');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/1');
+    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), Ember.$('.spec-reminder-title').text().trim());
+  });
+
+
+
+
 });
